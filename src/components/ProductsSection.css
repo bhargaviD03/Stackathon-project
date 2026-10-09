@@ -1,0 +1,82 @@
+.products-section {
+  width: 100%;
+  padding: 80px 20px;
+  background-color: #ffffff;
+}
+
+.products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* --- Left Side Image --- */
+.products-banner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* The torn paper effect behind the text */
+.banner-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  /* Torn white shape */
+  background-color: #ffffff;
+  padding: 40px 60px;
+  clip-path: polygon(
+    2% 15%, 8% 5%, 15% 12%, 25% 3%, 35% 10%, 45% 2%, 55% 8%, 65% 3%, 
+    75% 10%, 85% 4%, 92% 10%, 98% 5%, 100% 15%, 
+    98% 30%, 100% 45%, 97% 55%, 100% 70%, 98% 85%, 
+    92% 95%, 85% 88%, 75% 97%, 65% 90%, 55% 98%, 45% 92%, 
+    35% 97%, 25% 90%, 15% 96%, 8% 92%, 2% 85%, 
+    0% 70%, 3% 55%, 0% 40%, 2% 30%
+  );
+}
+
+.banner-subtitle {
+  display: block;
+  font-size: 22px;
+  font-weight: 400;
+  color: #3e6d3a;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.banner-title {
+  font-size: 52px;
+  font-weight: 500;
+  color: #3e6d3a;
+  font-family: 'Oswald', sans-serif;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .products-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .products-banner {
+    min-height: 400px;
+  }
+  .banner-title { font-size: 42px; }
+  .banner-text-overlay { padding: 30px 45px; }
+}

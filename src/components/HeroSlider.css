@@ -1,0 +1,249 @@
+/* =========================================
+   Hero Slider Base Styles
+   ========================================= */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  min-height: 600px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+}
+
+/* =========================================
+   Background Image & Overlay
+   ========================================= */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  transition: background-image 0.8s ease-in-out;
+  /* Smoother Ken Burns using easeOutExpo */
+  animation: kenBurns 8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+}
+
+/* =========================================
+   Slide Content (Text & Button)
+   ========================================= */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 5%;
+  /* ✅ Smoother entry animation using easeOutExpo */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideContentUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+@keyframes slideContentUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  font-size: 5.5rem;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 25px;
+  letter-spacing: -1.5px;
+  font-family: 'Oswald', 'Montserrat', sans-serif;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  font-weight: 400;
+  max-width: 550px;
+  font-family: 'Montserrat', sans-serif;
+  opacity: 0.95;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 18px 40px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  /* Smoother button hover */
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.hero-btn.green {
+  background-color: #3e6d3a;
+  color: #ffffff;
+}
+
+.hero-btn.green:hover {
+  background-color: #2e522b;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn.dark-green {
+  background-color: #2b4d28;
+  color: #ffffff;
+}
+
+.hero-btn.dark-green:hover {
+  background-color: #1c331a;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   Navigation Arrows
+   ========================================= */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 55px;
+  background-color: #ffffff;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 20;
+  /* Smoother arrow hover */
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #333333;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.slider-arrow:hover {
+  background-color: #f4f4f4;
+  color: #3e6d3a;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.slider-arrow.prev { left: 30px; }
+.slider-arrow.next { right: 30px; }
+
+/* =========================================
+   Torn Paper Bottom Edge
+   ========================================= */
+.hero-torn-edge {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background-color: #ffffff;
+  z-index: 15;
+  clip-path: polygon(
+    0% 100%, 0% 45%, 2% 65%, 4% 35%, 6% 60%, 8% 40%, 10% 70%, 
+    12% 45%, 14% 75%, 16% 35%, 18% 65%, 20% 50%, 22% 70%, 
+    24% 40%, 26% 65%, 28% 45%, 30% 75%, 32% 35%, 34% 60%, 
+    36% 45%, 38% 70%, 40% 50%, 42% 75%, 44% 40%, 46% 65%, 
+    48% 50%, 50% 75%, 52% 45%, 54% 65%, 56% 35%, 58% 60%, 
+    60% 45%, 62% 70%, 64% 50%, 66% 75%, 68% 40%, 70% 65%, 
+    72% 50%, 74% 70%, 76% 45%, 78% 65%, 80% 35%, 82% 60%, 
+    84% 45%, 86% 70%, 88% 50%, 90% 75%, 92% 40%, 94% 65%, 
+    96% 50%, 98% 70%, 100% 45%, 100% 100%
+  );
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 55px;
+  background-color: #ffffff;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  /* ✅ Force dark arrow color regardless of context */
+  color: #333333;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ✅ Force the SVG inside the button to always be visible */
+.slider-arrow svg {
+  stroke: #333333 !important;
+  display: block;
+}
+
+.slider-arrow:hover {
+  background-color: #3e6d3a;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.slider-arrow:hover svg {
+  stroke: #ffffff !important;
+}
+
+.slider-arrow.prev { left: 30px; }
+.slider-arrow.next { right: 30px; }
+/* =========================================
+   Responsive Adjustments
+   ========================================= */
+@media (max-width: 1200px) {
+  .hero-title { font-size: 4.5rem; }
+}
+
+@media (max-width: 992px) {
+  .hero-title { font-size: 3.5rem; }
+  .hero-description { font-size: 1rem; }
+  .slider-arrow { width: 45px; height: 45px; }
+  .slider-arrow.prev { left: 15px; }
+  .slider-arrow.next { right: 15px; }
+}
+
+@media (max-width: 768px) {
+  .hero-slider { height: 70vh; min-height: 500px; }
+  .hero-title { font-size: 2.8rem; margin-bottom: 15px; }
+  .hero-description { font-size: 0.95rem; margin-bottom: 25px; }
+  .hero-btn { padding: 14px 30px; font-size: 0.75rem; }
+  .hero-content { text-align: center; }
+  .hero-description { margin-left: auto; margin-right: auto; }
+  .slider-arrow {
+    top: auto;
+    bottom: 80px;
+    transform: none;
+  }
+  .slider-arrow:hover { transform: scale(1.05); }
+  .slider-arrow.prev { left: 20px; }
+  .slider-arrow.next { right: 20px; }
+}
