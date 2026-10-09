@@ -107,9 +107,9 @@ const Contact = () => {
         setTimeout(() => setSubmitted(false), 3000);
     };
 
-    const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+    // const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
-    const mapSrc = const mapSrc ="https://maps.google.com/maps?q=Navalur%2C%20Tamil%20Nadu&z=14&output=embed";
+    const mapSrc ="https://maps.google.com/maps?q=Navalur%2C%20Tamil%20Nadu&z=14&output=embed";
     return (
         <>
             <section className="contact-hero">
