@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import ContactSidebar from './ContactSidebar';
+
 const ALL_PRODUCTS = [
     { id: 1, name: 'Blueberries', price: 550, category: 'Fruits', image: 'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&q=80&w=100&h=100' },
     { id: 2, name: 'Avocados', price: 250, category: 'Fruits', image: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&q=80&w=100&h=100' },
@@ -13,10 +14,18 @@ const ALL_PRODUCTS = [
     { id: 8, name: 'Bananas', price: 50, category: 'Fruits', image: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&q=80&w=100&h=100' },
 ];
 
+const navItems = [
+    { path: '/', label: 'HOME' },
+    { path: '/about', label: 'ABOUT US' },
+    { path: '/typography', label: 'TYPOGRAPHY' },
+    { path: '/contact', label: 'CONTACT US' },
+];
+
 const Header = () => {
     const location = useLocation();
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isContactOpen, setIsContactOpen] = useState(false);
+    const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
@@ -40,19 +49,29 @@ const Header = () => {
         setIsCartOpen(!isCartOpen);
         setIsContactOpen(false);
         setIsSearchOpen(false);
+        setIsMobileNavOpen(false);  
     };
 
     const toggleContact = () => {
         setIsContactOpen(!isContactOpen);
         setIsCartOpen(false);
         setIsSearchOpen(false);
+        setIsMobileNavOpen(false); 
     };
 
     const toggleSearch = () => {
         setIsSearchOpen(!isSearchOpen);
         setIsCartOpen(false);
         setIsContactOpen(false);
+        setIsMobileNavOpen(false);  
         if (isSearchOpen) setSearchQuery('');
+    };
+
+    const toggleMobileNav = () => {
+        setIsMobileNavOpen(!isMobileNavOpen);
+        setIsCartOpen(false);
+        setIsContactOpen(false);
+        setIsSearchOpen(false);
     };
 
     const increaseQty = (id, e) => {
@@ -93,9 +112,7 @@ const Header = () => {
                         <span className="free-badge">FREE</span>
                     </div>
 
-
-
-
+                    {/* ✅ Desktop Nav (unchanged) */}
                     <nav className="nav-links">
                         <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
                             HOME
@@ -211,6 +228,14 @@ const Header = () => {
                             )}
                         </div>
 
+                        <div className="icon-wrapper mobile-menu-icon" onClick={toggleMobileNav}>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
+                        </div>
+
                         <div className="icon-wrapper menu-icon" onClick={toggleContact}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -221,6 +246,39 @@ const Header = () => {
                     </div>
                 </div>
             </header>
+
+            <div className={`mobile-nav-overlay ${isMobileNavOpen ? 'open' : ''}`} onClick={toggleMobileNav}></div>
+            <nav className={`mobile-nav-panel ${isMobileNavOpen ? 'open' : ''}`}>
+                <div className="mobile-nav-header">
+                    <img src="https://via.placeholder.com/150x40?text=HERBER" alt="Herber Logo" className="logo-img" />
+                    <button className="mobile-nav-close" onClick={toggleMobileNav} aria-label="Close menu">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <ul className="mobile-nav-list">
+                    {navItems.map((item) => (
+                        <li key={item.path}>
+                            <Link
+                                to={item.path}
+                                className={location.pathname === item.path ? 'active' : ''}
+                                onClick={toggleMobileNav}
+                            >
+                                {item.label}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+
+                <div className="mobile-nav-footer">
+                    <p className="mobile-nav-contact-title">Get in Touch</p>
+                    <p className="mobile-nav-contact">+1 323-913-4688</p>
+                    <p className="mobile-nav-contact">mail@demolink.org</p>
+                </div>
+            </nav>
 
             <ContactSidebar isOpen={isContactOpen} onClose={toggleContact} />
         </>

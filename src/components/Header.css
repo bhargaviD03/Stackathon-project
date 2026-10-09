@@ -286,3 +286,148 @@
   padding: 20px 0;
   font-style: italic;
 }
+
+
+.mobile-menu-icon {
+  display: none; 
+}
+
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+}
+
+.mobile-nav-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-panel {
+  position: fixed;
+  top: 0;
+  left: -320px;                   
+  width: 300px;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 999;
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
+  transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.mobile-nav-panel.open {
+  left: 0;
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 22px;
+  border-bottom: 1px solid #eee;
+}
+
+.mobile-nav-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.mobile-nav-close:hover svg {
+  stroke: #3e6d3a;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.mobile-nav-list li {
+  border-bottom: 1px solid #f1ede6;
+}
+
+.mobile-nav-list a {
+  display: block;
+  padding: 20px 25px;
+  text-decoration: none;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.mobile-nav-list a:hover {
+  background-color: #f9f7f4;
+  border-left-color: #3e6d3a;
+  color: #3e6d3a;
+}
+
+.mobile-nav-list a.active {
+  background-color: #3e6d3a;
+  color: #ffffff;
+  border-left-color: #2e522b;
+}
+
+.mobile-nav-footer {
+  padding: 25px 22px;
+  border-top: 1px solid #eee;
+  background-color: #f9f7f4;
+}
+
+.mobile-nav-contact-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  color: #3e6d3a;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.mobile-nav-contact {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.9;
+}
+
+
+@media (max-width: 992px) {
+
+  .nav-links {
+    display: none;
+  }
+
+
+  .menu-icon {
+    display: none;
+  }
+
+
+  .mobile-menu-icon {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-nav-panel {
+    width: 280px;
+    left: -280px;
+  }
+}
