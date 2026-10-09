@@ -5,7 +5,7 @@ import './Contact.css';
 const Contact = () => {
     const [formData, setFormData] = useState({
         firstName: '',
-        lastName: '',
+        lastName: '', 
         email: '',
         message: '',
     });
