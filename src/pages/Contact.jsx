@@ -5,7 +5,7 @@ import './Contact.css';
 const Contact = () => {
     const [formData, setFormData] = useState({
         firstName: '',
-        lastName: '', 
+        lastName: '',
         email: '',
         message: '',
     });
@@ -18,7 +18,12 @@ const Contact = () => {
         e.preventDefault();
         console.log('Form submitted:', formData);
         alert('Message sent! (In a real app, this would submit to a backend.)');
-        setFormData({ firstName: '', lastName: '', email: '', message: '' });
+        setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            message: ''
+        });
     };
 
     return (
@@ -76,13 +81,9 @@ const Contact = () => {
             <section className="contact-form-section">
                 <div className="contact-form-container">
                     <div className="map-col">
-                        <iframe
-                            className="contact-map"
-                            title="Map showing Navalur, Tamil Nadu"
-                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizDqeh3udy11xDc5Ao2YStR2gLc-rfc&q=navalur%2Ctamilnadu&maptype=roadmap&zoom=14"
-                            allowFullScreen
-                            loading="lazy"
-                        />
+
+                        <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border:0" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizdQeh3udy11xDc5Ao2YStR2gLc-rfc&amp;q=navalur%2Ctamilnadu&amp;maptype=roadmap&amp;zoom=14"><a href="https://www.gps.ie/" rel="nofollow">gps trackers</a></iframe>
+
                     </div>
 
                     <div className="form-col">
@@ -96,7 +97,7 @@ const Contact = () => {
                                     placeholder="First Name"
                                     value={formData.firstName}
                                     onChange={handleChange}
-                                    required
+
                                 />
                                 <input
                                     type="text"
@@ -104,7 +105,7 @@ const Contact = () => {
                                     placeholder="Last Name"
                                     value={formData.lastName}
                                     onChange={handleChange}
-                                    required
+
                                 />
                             </div>
 
@@ -114,7 +115,7 @@ const Contact = () => {
                                 placeholder="E-mail"
                                 value={formData.email}
                                 onChange={handleChange}
-                                required
+
                             />
 
                             <textarea
@@ -123,7 +124,7 @@ const Contact = () => {
                                 value={formData.message}
                                 onChange={handleChange}
                                 rows="7"
-                                required
+
                             ></textarea>
 
                             <button type="submit" className="send-message-btn">
