@@ -109,8 +109,7 @@ const Contact = () => {
 
     const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
-    const mapSrc = `https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=navalur,tamilnadu&maptype=roadmap&zoom=14`;
-
+    const mapSrc = const mapSrc ="https://maps.google.com/maps?q=Navalur%2C%20Tamil%20Nadu&z=14&output=embed";
     return (
         <>
             <section className="contact-hero">
