@@ -82,8 +82,12 @@ const Contact = () => {
                 <div className="contact-form-container">
                     <div className="map-col">
 
-                        <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border:0" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizdQeh3udy11xDc5Ao2YStR2gLc-rfc&amp;q=navalur%2Ctamilnadu&amp;maptype=roadmap&amp;zoom=14"><a href="https://www.gps.ie/" rel="nofollow">gps trackers</a></iframe>
-
+                            <iframe
+                            className="contact-map"
+                            title="Map showing Navalur, Tamil Nadu"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizdQeh3udy11xDc5Ao2YStR2gLc-rfc&amp;q=navalur%2Ctamilnadu&amp;maptype=roadmap&amp;zoom=14"                            loading="lazy"
+                            allowFullScreen
+                        />
                     </div>
 
                     <div className="form-col">
