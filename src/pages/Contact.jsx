@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Contact.css';
-i
+
 const Contact = () => {
     const [formData, setFormData] = useState({
         firstName: '',
