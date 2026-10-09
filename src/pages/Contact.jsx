@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Contact.css';
 
@@ -76,7 +76,13 @@ const Contact = () => {
             <section className="contact-form-section">
                 <div className="contact-form-container">
                     <div className="map-col">
-                        <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border:0" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizdQeh3udy11xDc5Ao2YStR2gLc-rfc&amp;q=navalur%2Ctamilnadu&amp;maptype=roadmap&amp;zoom=14"><a href="https://www.gps.ie/" rel="nofollow">4G GPS</a></iframe></div>
+                        <iframe
+                            className="contact-map"
+                            title="Map showing Navalur, Tamil Nadu"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizDqeh3udy11xDc5Ao2YStR2gLc-rfc&q=navalur%2Ctamilnadu&maptype=roadmap&zoom=14"
+                            allowFullScreen
+                            loading="lazy"
+                        />
                     </div>
 
                     <div className="form-col">
