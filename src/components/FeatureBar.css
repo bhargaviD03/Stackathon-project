@@ -1,6 +1,3 @@
-/* =========================================
-   Feature Bar Base
-   ========================================= */
 .feature-bar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -9,53 +6,52 @@
   margin: 60px auto;
   padding: 0 20px;
 }
-
-/* =========================================
-   Feature Card (Default State)
-   ========================================= */
 .feature-card {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 30px 25px;
-  border: 1px solid #e5e5e5;
+  margin: 8px; /* Space so the outer border doesn't touch the inner border */
   background-color: #ffffff;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* INNER BORDER */
+  border: 1px solid #e5e5e5;
 }
 
-/* =========================================
-   Hover State — Turns dark green
-   ========================================= */
+/* OUTER BORDER — drawn as a pseudo-element */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 1px solid #e5e5e5;
+  pointer-events: none;
+  transition: border-color 0.4s ease;
+}
+
+
 .feature-card:hover {
-  background-color: #3e6d3a;       /* Dark green background */
+  background-color: #3e6d3a;
   border-color: #3e6d3a;
   box-shadow: 0 10px 25px rgba(62, 109, 58, 0.25);
   transform: translateY(-3px);
 }
 
-/* Change the title color to white on hover */
+.feature-card:hover::before {
+  border-color: #3e6d3a;
+}
+
 .feature-card:hover .feature-title {
   color: #ffffff;
 }
 
-/* Change the SVG icon color to white on hover */
 .feature-card:hover .feature-icon svg {
   stroke: #ffffff;
-}
-
-/* Smooth transition on the icon color */
-.feature-icon svg {
-  transition: stroke 0.4s ease;
-}
-
-/* Smooth transition on the title color */
-.feature-title {
-  font-size: 18px;
-  font-weight: 500;
-  color: #3e6d3a;
-  font-family: 'Montserrat', sans-serif;
-  transition: color 0.4s ease;
 }
 
 .feature-icon {
@@ -63,15 +59,24 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: stroke 0.4s ease;
 }
 
-/* =========================================
-   Responsive
-   ========================================= */
+.feature-icon svg {
+  transition: stroke 0.4s ease;
+}
+
+.feature-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #3e6d3a;
+  font-family: 'Montserrat', sans-serif;
+  transition: color 0.4s ease;
+}
 @media (max-width: 900px) {
   .feature-bar {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 20px;
   }
   .feature-card {
     padding: 20px;

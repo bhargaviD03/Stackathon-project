@@ -4,13 +4,10 @@ import './ContactSidebar.css';
 const ContactSidebar = ({ isOpen, onClose }) => {
   return (
     <>
-      {/* Dark Overlay behind the sidebar */}
       <div className={`sidebar-overlay ${isOpen ? 'open' : ''}`} onClick={onClose}></div>
 
-      {/* Sidebar Panel */}
       <div className={`contact-sidebar ${isOpen ? 'open' : ''}`}>
         
-        {/* Header */}
         <div className="sidebar-header">
           <h2>Get in Touch</h2>
           <button className="close-btn" onClick={onClose}>
@@ -18,7 +15,6 @@ const ContactSidebar = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* Content */}
         <div className="sidebar-content">
           <p className="sidebar-desc">
             We are always ready to provide you with fresh organic products for your home or office. Contact us to find out how we can help you.
@@ -50,7 +46,6 @@ const ContactSidebar = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        {/* Sidebar Footer (Social Icons) */}
         <div className="sidebar-footer">
           <a href="#fb"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
           <a href="#tw"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>

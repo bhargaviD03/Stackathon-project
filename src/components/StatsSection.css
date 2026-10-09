@@ -1,0 +1,134 @@
+.stats-section {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4a3a2a;
+}
+
+.stats-bg {
+  position: absolute;
+  inset: 0;
+background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1920');  background-repeat: no-repeat;
+
+  filter: blur(3px) brightness(0.6);
+  transform: scale(1.1);
+  z-index: 0;
+}
+.stats-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 25, 20, 0.35);
+  z-index: 1;
+}
+
+.stats-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.stat-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: 0;
+  width: 1px;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.stat-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.stat-value {
+  font-family: 'Oswald', 'Montserrat', sans-serif;
+  font-size: 62px;
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e8a93a;
+}
+
+.stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.stats-torn-edge {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #ffffff;
+  z-index: 3;
+  clip-path: polygon(
+    0% 100%, 0% 55%, 2% 70%, 4% 45%, 6% 65%, 8% 50%, 10% 75%,
+    12% 55%, 14% 70%, 16% 45%, 18% 65%, 20% 55%, 22% 75%,
+    24% 50%, 26% 70%, 28% 55%, 30% 75%, 32% 45%, 34% 65%,
+    36% 55%, 38% 70%, 40% 50%, 42% 75%, 44% 45%, 46% 65%,
+    48% 55%, 50% 70%, 52% 50%, 54% 75%, 56% 45%, 58% 65%,
+    60% 55%, 62% 70%, 64% 45%, 66% 75%, 68% 55%, 70% 70%,
+    72% 45%, 74% 65%, 76% 55%, 78% 70%, 80% 45%, 82% 75%,
+    84% 55%, 86% 70%, 88% 45%, 90% 65%, 92% 55%, 94% 70%,
+    96% 45%, 98% 65%, 100% 55%, 100% 100%
+  );
+}
+
+
+@media (max-width: 992px) {
+  .stats-section { height: auto; padding: 60px 0; }
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 20px;
+  }
+  .stat-item:not(:last-child)::after { display: none; }
+  .stat-value { font-size: 50px; }
+  .stat-label { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .stats-section { padding: 50px 0; }
+  .stats-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .stat-value { font-size: 44px; }
+  .stat-main { gap: 10px; }
+  .stat-icon svg { width: 30px; height: 30px; }
+  .stat-label { font-size: 13px; }
+}

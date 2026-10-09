@@ -41,10 +41,9 @@ const ProductGrid = () => {
           onMouseEnter={() => setHoveredId(product.id)}
           onMouseLeave={() => setHoveredId(null)}
         >
-          <div className="product-image-wrapper">
+          <div className={`product-image-wrapper ${hoveredId === product.id ? 'hovered' : ''}`}>
             <img src={product.image} alt={product.name} className="product-image" />
-            
-            {/* Hover Overlay with Add to Cart */}
+
             {hoveredId === product.id && (
               <div className="product-overlay">
                 <button className="add-to-cart-btn">ADD TO CART</button>

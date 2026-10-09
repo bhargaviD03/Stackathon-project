@@ -6,7 +6,6 @@ const Footer = () => {
     <>            <div className="footer-banner">
       <div className="banner-inner">
         
-        {/* Left Side: Overlapping Image Cluster */}
         <div className="banner-images">
           <img 
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=300&h=200" 
@@ -25,7 +24,6 @@ const Footer = () => {
           />
         </div>
 
-        {/* Right Side: Text Content */}
         <div className="banner-text">
           <h1>Get Full-Featured Intense Template!</h1>
           
@@ -54,7 +52,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* The torn paper wave at the bottom */}
       <div className="torn-edge-bottom"></div>
     </div>
     <footer className="main-footer">

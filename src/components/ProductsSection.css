@@ -13,7 +13,6 @@
   align-items: start;
 }
 
-/* --- Left Side Image --- */
 .products-banner {
   position: relative;
   width: 100%;
@@ -29,14 +28,12 @@
   display: block;
 }
 
-/* The torn paper effect behind the text */
 .banner-text-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  /* Torn white shape */
   background-color: #ffffff;
   padding: 40px 60px;
   clip-path: polygon(
@@ -68,7 +65,6 @@
   letter-spacing: -0.5px;
 }
 
-/* --- Responsive --- */
 @media (max-width: 900px) {
   .products-container {
     grid-template-columns: 1fr;

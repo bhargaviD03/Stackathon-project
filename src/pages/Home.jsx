@@ -2,7 +2,10 @@ import React from 'react';
 import HeroSlider from '../components/HeroSlider';
 import FeatureBar from '../components/FeatureBar';
 import ProductsSection from '../components/ProductsSection';
-import FooterBanner from '../components/Footer';
+import OurApproach from '../components/OurApproach';
+import TeamSection from '../components/TeamSection';
+import StatsSection from '../components/StatsSection';
+import GallerySection from '../components/GallerySection';
 
 const Home = () => {
   return (
@@ -10,6 +13,10 @@ const Home = () => {
       <HeroSlider />
       <FeatureBar />
       <ProductsSection />
+      <OurApproach />
+      <TeamSection />
+      <StatsSection />
+      <GallerySection />
     </>
   );
 };

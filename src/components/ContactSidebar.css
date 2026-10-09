@@ -1,4 +1,4 @@
-/* --- Sidebar Overlay --- */
+
 .sidebar-overlay {
   position: fixed;
   top: 0;
@@ -16,7 +16,7 @@
   visibility: visible;
 }
 
-/* --- Contact Sidebar --- */
+
 .contact-sidebar {
   position: fixed;
   top: 0;
