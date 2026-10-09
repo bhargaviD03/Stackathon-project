@@ -207,6 +207,64 @@
   box-shadow: 0 10px 20px rgba(62, 109, 58, 0.25);
 }
 
+.form-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contact-form input.input-error,
+.contact-form textarea.input-error {
+  background-color: #fdecea;
+  border-left: 3px solid #e74c3c;
+}
+
+.field-error {
+  display: block;
+  color: #e74c3c;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 6px;
+  padding-left: 4px;
+  animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-success {
+  color: #3e6d3a;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 15px;
+  padding: 12px 18px;
+  background-color: #eaf5e8;
+  border-left: 3px solid #3e6d3a;
+  border-radius: 2px;
+  animation: slideDown 0.3s ease;
+}
+
+.contact-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 480px) {
+  .contact-form .form-row {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 992px) {
   .contact-hero-title { font-size: 52px; }
   .contact-cards-container {
