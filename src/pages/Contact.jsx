@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Contact.css';
-
+i
 const Contact = () => {
     const [formData, setFormData] = useState({
         firstName: '',
@@ -10,16 +10,106 @@ const Contact = () => {
         message: '',
     });
 
+    const [errors, setErrors] = useState({});
+    const [submitted, setSubmitted] = useState(false);
+
+    const validateField = (name, value) => {
+        const trimmed = value.trim();
+
+        if (name === 'firstName') {
+            if (!trimmed) {
+                return 'Please fill your first name';
+            } else if (trimmed.length < 2) {
+                return 'First name must be at least 2 characters';
+            } else {
+                return '';
+            }
+        }
+        else if (name === 'lastName') {
+            if (!trimmed) {
+                return 'Please fill your last name';
+            } else if (trimmed.length < 2) {
+                return 'Last name must be at least 2 characters';
+            } else {
+                return '';
+            }
+        }
+        else if (name === 'email') {
+            if (!trimmed) {
+                return 'Please enter your email';
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+                return 'Please enter a valid email address';
+            } else {
+                return '';
+            }
+        }
+        else if (name === 'message') {
+            if (!trimmed) {
+                return 'Please enter your message';
+            } else if (trimmed.length < 10) {
+                return 'Message must be at least 10 characters';
+            } else {
+                return '';
+            }
+        }
+        else {
+            return '';
+        }
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+        Object.keys(formData).forEach((key) => {
+            const error = validateField(key, formData[key]);
+            if (error) newErrors[key] = error;
+        });
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+
+        if (errors[name]) {
+            const fieldError = validateField(name, value);
+            setErrors((prev) => ({ ...prev, [name]: fieldError }));
+        }
+    };
+
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+        const error = validateField(name, value);
+        setErrors((prev) => ({ ...prev, [name]: error }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const isValid = validateForm();
+        if (!isValid) {
+            setSubmitted(false);
+            return;
+        }
+
+        setSubmitted(true);
         console.log('Form submitted:', formData);
         alert('Message sent! (In a real app, this would submit to a backend.)');
-        setFormData({ firstName: '', lastName: '', email: '', message: '' });
+
+        setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            message: ''
+        });
+        setErrors({});
+
+        setTimeout(() => setSubmitted(false), 3000);
     };
+
+    const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
+    const mapSrc = `https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=navalur,tamilnadu&maptype=roadmap&zoom=14`;
 
     return (
         <>
@@ -79,56 +169,85 @@ const Contact = () => {
                         <iframe
                             className="contact-map"
                             title="Map showing Navalur, Tamil Nadu"
-                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizDqeh3udy11xDc5Ao2YStR2gLc-rfc&q=navalur%2Ctamilnadu&maptype=roadmap&zoom=14"
-                            allowFullScreen
+                            src={mapSrc}
                             loading="lazy"
+                            allowFullScreen
                         />
                     </div>
 
                     <div className="form-col">
                         <h2 className="form-heading">Contact Form</h2>
 
-                        <form onSubmit={handleSubmit} className="contact-form">
+                        <form onSubmit={handleSubmit} className="contact-form" noValidate>
                             <div className="form-row">
-                                <input
-                                    type="text"
-                                    name="firstName"
-                                    placeholder="First Name"
-                                    value={formData.firstName}
-                                    onChange={handleChange}
-                                    required
-                                />
-                                <input
-                                    type="text"
-                                    name="lastName"
-                                    placeholder="Last Name"
-                                    value={formData.lastName}
-                                    onChange={handleChange}
-                                    required
-                                />
+                                <div className="form-field">
+                                    <input
+                                        type="text"
+                                        name="firstName"
+                                        placeholder="First Name"
+                                        value={formData.firstName}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={errors.firstName ? 'input-error' : ''}
+                                    />
+                                    {errors.firstName && (
+                                        <span className="field-error">{errors.firstName}</span>
+                                    )}
+                                </div>
+
+                                <div className="form-field">
+                                    <input
+                                        type="text"
+                                        name="lastName"
+                                        placeholder="Last Name"
+                                        value={formData.lastName}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={errors.lastName ? 'input-error' : ''}
+                                    />
+                                    {errors.lastName && (
+                                        <span className="field-error">{errors.lastName}</span>
+                                    )}
+                                </div>
                             </div>
 
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="E-mail"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                            />
+                            <div className="form-field">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="E-mail"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    className={errors.email ? 'input-error' : ''}
+                                />
+                                {errors.email && (
+                                    <span className="field-error">{errors.email}</span>
+                                )}
+                            </div>
 
-                            <textarea
-                                name="message"
-                                placeholder="Message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                rows="7"
-                                required
-                            ></textarea>
+                            <div className="form-field">
+                                <textarea
+                                    name="message"
+                                    placeholder="Message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    rows="7"
+                                    className={errors.message ? 'input-error' : ''}
+                                ></textarea>
+                                {errors.message && (
+                                    <span className="field-error">{errors.message}</span>
+                                )}
+                            </div>
 
                             <button type="submit" className="send-message-btn">
                                 SEND MESSAGE
                             </button>
+
+                            {submitted && (
+                                <p className="form-success">✅ Your message has been sent successfully!</p>
+                            )}
                         </form>
                     </div>
                 </div>
