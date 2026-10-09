@@ -1,9 +1,11 @@
 import React from 'react';
 import './Footer.css';
+import logo from '../assets/logo.jpg';
 
 const Footer = () => {
   return (
-    <>            <div className="footer-banner">
+    <>            
+    <div className="footer-banner">
       <div className="banner-inner">
         
         <div className="banner-images">
@@ -58,10 +60,9 @@ const Footer = () => {
       <div className="footer-container">
 
         <div className="footer-col brand-col">
-          <div className="footer-logo">
-
-            <img src={"https://via.placeholder.com/150x40?text=HERBER"} alt="Herber Logo" />
-            <span className="free-badge">FREE</span>
+          <div className="footer-logo">  
+          <img src={logo} style={{borderRadius: '50%'}}  alt="Herber Logo"/>
+          <span >HERBER</span>
           </div>
           <p className="brand-desc">
             Herber is an organic farm located in California. We offer healthy foods and products to our clients.
@@ -108,12 +109,10 @@ const Footer = () => {
           <h3>Gallery</h3>
           <div className="gallery-grid">
             <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 1" />
-            <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 2" />
-            <div className="gallery-item-hover">
+            <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 2" /><br/>
               <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 3" />
-              <div className="overlay"><span>+</span></div>
-            </div>
-<img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 4" />          </div>
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 4" />         
+             </div>
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import ContactSidebar from './ContactSidebar';
-
+import logo from '../assets/logo.jpg'; 
 const ALL_PRODUCTS = [
     { id: 1, name: 'Blueberries', price: 550, category: 'Fruits', image: 'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&q=80&w=100&h=100' },
     { id: 2, name: 'Avocados', price: 250, category: 'Fruits', image: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&q=80&w=100&h=100' },
@@ -108,11 +108,10 @@ const Header = () => {
             <header className="main-header">
                 <div className="header-container">
                     <div className="logo-section">
-                        <img src="https://via.placeholder.com/150x40?text=HERBER" alt="Herber Logo" className="logo-img" />
-                        <span className="free-badge">FREE</span>
+                        <img src={logo} alt="Herber Logo" className="logo-img" style={{borderRadius: '50%'}} />
+                        <span >HERBER</span>
                     </div>
 
-                    {/* ✅ Desktop Nav (unchanged) */}
                     <nav className="nav-links">
                         <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
                             HOME
