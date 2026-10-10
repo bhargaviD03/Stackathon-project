@@ -109,7 +109,7 @@ const Footer = () => {
           <h3>Gallery</h3>
           <div className="gallery-grid">
             <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 1" />
-            <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 2" /><br/>
+            <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 2" />
               <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 3" />
             <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=200&h=200" alt="Gallery 4" />         
              </div>
